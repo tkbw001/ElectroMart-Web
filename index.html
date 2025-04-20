@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ElectroMart - Home</title>
+  <link rel="stylesheet" href="Styel.css" />
+  <style>
+    /* أنيميشن للبنر */
+    .banner {
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      background: linear-gradient(135deg, #827674, #ff6f61);
+      padding: 40px;
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* الأنيميشن للـ cards */
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 22%;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.6s ease-out forwards;
+    }
+
+    /* تأثير عند مرور الفأرة */
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* تأثير عند التمرير */
+    .deals {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .deals .card {
+      animation-delay: 0.3s;
+    }
+
+    .deals .card:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .deals .card:nth-child(3) {
+      animation-delay: 0.7s;
+    }
+
+    .deals .card:nth-child(4) {
+      animation-delay: 0.9s;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* تأثيرات للروابط */
+    .discount a {
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .discount a:hover {
+      color: #ff6347;
+      transform: scale(1.1);
+    }
+
+    /* إضافة تأثير الأنيميشن على الرابط داخل <h2> */
+    h2 a {
+      opacity: 0;
+      animation: fadeInLink 1.5s ease-out forwards;
+    }
+
+    @keyframes fadeInLink {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* تنسيق عام */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    h1, h2, h3 {
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+    }
+
+    /* التأكد من التنسيق الجيد على الأجهزة الصغيرة */
+    @media (max-width: 768px) {
+      .deals {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to ElectroMart</h1>
+    <nav>
+        <ul>
+            <li><a href="Detail.html">Details</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li>
+              <a href="cart.html" id="cart-link">
+                <img src="cart0-remove.png" alt="Cart Icon" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 5px;">
+                (<span id="cart-count">0</span>)
+              </a>
+            </li>
+            <li><a href="checkout.html">Check Out</a></li>
+        </ul>
+    </nav>
+</header>
+
+  <div class="banner">
+    <h1>Budget-Friendly Deals at ElectroMart</h1>
+    <h2>Everything under $5000</h2>
+    <p style="margin-top: 15px;">Save big on mobiles, TVs, laptops, and computers — new & used!</p>
+  </div>
+
+  <div class="deals">
+    <div class="card">
+      <img src="eg-galaxy-a55-5g-sm-a556-sm-a556elvwmea-thumb-541836667.avif" alt="Mobile">
+      <h3>Mobiles</h3>
+      <p>Top brands at unbeatable prices.</p>
+      <div class="discount"><a href="products.html">10% OFF – Use code: <span class="code">SAVE10</span></a></div>
+    </div>
+
+    <div class="card">
+      <img src="Samsung-Crystal-uhd.jpg" alt="TV">
+      <h3>Smart TVs</h3>
+      <p>Experience entertainment in 4K!</p>
+      <div class="discount"><a href="products.html">Up to 20% OFF</a></div>
+    </div>
+
+    <div class="card">
+      <img src="Laptop1.jpg" alt="Laptop">
+      <h3>Laptops</h3>
+      <p>Reliable and high-performance options.</p>
+      <div class="discount"><a href="products.html">Extra 15% on Used Models</a></div>
+    </div>
+
+    <div class="card">
+      <img src="pc.jpg" alt="Computer">
+      <h3>Desktop PCs</h3>
+      <p>Perfect for gaming & work.</p>
+      <div class="discount"><a href="products.html">Limited Time Deal!</a></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 ElectroMart. All rights reserved.</p>
+  </footer>
+
+  <script src="java.js"></script>
+</body>
+</html>

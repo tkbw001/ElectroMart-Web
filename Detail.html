@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ElectroMart - Details</title>
+  <link rel="stylesheet" href="Styel.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem 0;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #77d165;
+    }
+
+    .main-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .content-box {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #f6f3f3;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      color: #000000;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .description {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+    }
+
+    .description.show {
+      max-height: 1000px;
+      padding-top: 1rem;
+    }
+
+    p2 {
+      font-size: 1.1rem;
+      color: #000000;
+      line-height: 1.7;
+      margin: 1rem 0;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .details-btn {
+      background-color: #000000;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s;
+    }
+
+    .details-btn:hover {
+      background-color: #4ca468;
+    }
+
+    footer {
+      background-color: #262424;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ElectroMart</h1>
+    <nav>
+      <ul>
+        <li><a href="Detail.html">Details</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="login.html">Log In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <div class="content-box">
+      <h2>Welcome to ElectroMart</h2>
+      <button class="details-btn" onclick="toggleDetails()">Details</button>
+      
+      <div class="description" id="desc">
+        <p>
+          At <span class="highlight">ElectroMart</span>, we offer unbeatable deals on 
+          <span class="highlight">mobiles, TVs, laptops, and computers</span> — all at prices lower than any other store!
+        </p>
+        <p>
+          Why are our prices so good? Because we work <span class="highlight">directly with manufacturers and suppliers</span>, 
+          with no middleman — giving you top-tier products at factory-level pricing.
+        </p>
+        <p>
+          Not only that, but we also offer a wide selection of <span class="highlight">high-quality used products</span> to give 
+          you even more value for your money.
+        </p>
+        <p>
+          Discover a smarter, more affordable way to shop for tech — only at <span class="highlight">ElectroMart</span>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 ElectroMart. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleDetails() {
+      const desc = document.getElementById("desc");
+      desc.classList.toggle('show');
+      const btn = document.querySelector(".details-btn");
+      btn.textContent = desc.classList.contains('show') ? 'Hide Details' : 'Details';
+    }
+
+    // تحديث عداد السلة
+    document.addEventListener('DOMContentLoaded', function() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    });
+  </script>
+</body>
+</html>

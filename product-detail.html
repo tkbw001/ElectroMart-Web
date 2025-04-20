@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - ElectroMart</title>
+    <link rel="stylesheet" href="Styel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>ElectroMart</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="Detail.html">Details</a></li>
+                <li>
+                    <a href="cart.html" id="cart-link">
+                      <img src="cart0-remove.png" alt="Cart Icon" style="width: 60px; height: 60px; vertical-align: middle; margin-right: 5px;">
+                      (<span id="cart-count">0</span>)
+                    </a>
+                  </li>
+                <li><a href="checkout.html">Check Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="product-detail-container">
+        <div class="product-images">
+            <div class="main-image">
+                <img id="main-product-image" src="" alt="Main Product Image">
+            </div>
+            <div class="thumbnail-images">
+                <img src="" alt="Thumbnail 1" class="thumbnail">
+                <img src="" alt="Thumbnail 2" class="thumbnail">
+                <img src="" alt="Thumbnail 3" class="thumbnail">
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1 id="product-title">Product Title</h1>
+            <div class="availability">
+                <span id="availability-status" class="available">Available</span>
+            </div>
+            <div class="price-container">
+                <span id="product-price" class="price">$0.00</span>
+                <span class="original-price">$0.00</span>
+                <span class="discount">0% OFF</span>
+            </div>
+            
+            <div class="product-description">
+                <h3>Description</h3>
+                <p id="product-description">Product description goes here...</p>
+            </div>
+
+            <div class="product-specs">
+                <h3>Specifications</h3>
+                <ul id="specs-list">
+                    <!-- سيتم ملؤها بالجافاسكريبت -->
+                </ul>
+            </div>
+
+            <div class="add-to-cart">
+                <div class="quantity-selector">
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input">
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <button id="add-to-cart-btn" class="btn-primary">Add to Cart</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ElectroMart. All rights reserved.</p>
+    </footer>
+
+    <script src="java.js"></script>
+</body>
+</html>
