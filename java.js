@@ -295,14 +295,18 @@ function renderCheckoutItems() {
     const shipping = subtotal > 100 ? 0 : 10;
     document.getElementById('checkout-shipping').textContent = `$${shipping.toFixed(2)}`;
     document.getElementById('checkout-total').textContent = `$${(subtotal + shipping).toFixed(2)}`;
+    
 }
+
 
 // تهيئة صفحة تفاصيل المنتج
 function initProductDetailPage() {
     const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-   
-    
+    const productId = urlParams.get('id'); // احصل على المعرف من الرابط
+
+    console.log("Attempting to load product with ID:", productId); // سجل المعرف للتحقق
+
+    // بيانات المنتجات الأولى (معرفات رقمية)
     const products = {
         '1': {
             name: 'Samsung Galaxy Z Flip3',
@@ -326,47 +330,286 @@ function initProductDetailPage() {
             image: 'iphone.png',
             description: 'Apple\'s most advanced iPhone with the A18 Bionic chip and improved camera system.',
             specs: ['6.7-inch Super Retina XDR Display', '1TB Storage', 'Triple 48MP Camera System', '4400mAh Battery'],
-            available: false
+            available: false // Example: Out of stock
+        },
+        '4': {
+            name: 'Samsung a55',
+            price: 1500,
+            image: 'eg-galaxy-a55-5g-sm-a556-sm-a556elvwmea-thumb-541836667.avif',
+            description: 'The new Samsung a55 offers great value and performance for mid-range users.',
+            specs: ['6.6-inch Super AMOLED Display', '128GB Storage', '64MP Triple Camera', '5000mAh Battery'],
+            available: true
+        },
+        '5': {
+            name: 'iPhone 14',
+            price: 500,
+            image: 'Apple-iPhone-14.jpg',
+            description: 'iPhone 14 with great performance and camera in a familiar form factor.',
+            specs: ['6.1-inch Super Retina XDR', '128GB Storage', '12MP Dual Camera', '3279mAh Battery'],
+            available: true
+        },
+        '6': {
+            name: 'iPhone 16 Plus',
+            price: 900,
+            image: 'iphone 16 plus.jpeg',
+            description: 'The larger version of iPhone 16 with extended battery life.',
+            specs: ['6.8-inch Retina Display', '256GB Storage', '48MP Camera', '5000mAh Battery'],
+            available: false // Example: Out of stock
         }
-        // يمكن إضافة المزيد من المنتجات هنا
     };
+
+    // بيانات المنتجات الأخرى (معرفات تبدأ بـ 'p')
+    const productDetails = {
+        "p1": {
+            name: "iPhone 15 Pro Max",
+            description: "The iPhone 15 Pro Max features a stunning 6.7-inch Super Retina XDR display, A16 Bionic chip, and an advanced triple-camera system.",
+            price: 1100,
+            image: "iphone 15 pro max.jpg",
+            specs: ["6.7-inch Super Retina XDR", "A16 Bionic Chip", "Triple-camera system"],
+            available: true
+        },
+        "p2": {
+            name: "LG TV",
+            description: "Experience true-to-life colors with the LG 55-inch OLED TV. Features 4K resolution, Dolby Vision, and smart capabilities.",
+            price: 2000,
+            image: "lg-tv.avif",
+            specs: ["55-inch OLED Display", "4K Resolution", "Dolby Vision", "Smart TV"],
+            available: true
+        },
+        "p3": {
+            name: "Samsung TV", // Note: This matches one of the Samsung TVs in products.html
+            description: "The Samsung 55-inch 4K Crystal UHD TV offers vibrant colors and clarity for an immersive viewing experience.",
+            price: 1300,
+            image: "Samsaoung-tv.avif", // Make sure this path is correct
+            specs: ["55-inch 4K Crystal UHD", "Vibrant Colors"],
+            available: true
+        },
+        "p4": {
+            name: "Arktek NVIDIA GeForce GTX 750 TI",
+            description: "A high-performance graphics card perfect for gaming and media production, featuring 4GB of GDDR5 memory.",
+            price: 300,
+            image: "Arktek-NVIDIA-GeForce-GTX-750-TI-4GB.jpg", // Make sure this path is correct
+            specs: ["4GB GDDR5", "128-Bit Interface"],
+            available: true
+        },
+        "p5": {
+            name: "MSI Gaming GeForce RTX 4060",
+            description: "An advanced graphics card with real-time ray tracing and AI-enhanced graphics, perfect for gaming at 4K resolution.",
+            price: 500,
+            image: "4060.jpg", // Make sure this path is correct
+            specs: ["8GB GDDR6", "128-Bit Interface", "Real-time Ray Tracing"],
+            available: true
+        },
+        "p6": {
+            name: "ZOTAC GAMING GeForce RTX 4080 Super",
+            description: "A top-tier GPU for gamers and professionals, offering exceptional performance with 16GB of GDDR6X memory.",
+            price: 1300,
+            image: "ZOTAC-GAMING-GeForce-RTX-4080-Super-Trinity-White-OC-16GB.jpg", // Make sure this path is correct
+            specs: ["16GB GDDR6X"],
+            available: false
+        },
+         "p7": {
+            name: "HP Victus Gaming Laptop",
+            description: "The HP Victus Gaming Laptop is powered by an Intel i7 processor, 16GB RAM, and a 512GB SSD for an unbeatable gaming experience.",
+            price: 1300,
+            image: "Laptop1.jpg", // Make sure this path is correct
+            specs: ["Intel i7 Processor", "16GB RAM", "512GB SSD"],
+            available: true
+        },
+        "p8": {
+            name: "ASUS TUF Gaming A15 FA506NFR",
+            description: "This gaming laptop features an AMD Ryzen 7, 16GB RAM, and NVIDIA GeForce RTX 3060 for smooth gameplay at 1080p.",
+            price: 1000,
+            image: "Latop2.jpg", // Make sure this path is correct
+            specs: ["AMD Ryzen 7", "16GB RAM", "NVIDIA GeForce RTX 3060"],
+            available: true
+        },
+        "p9": {
+            name: "Lenovo IdeaCentre Gaming5 14IOB6",
+            description: "A powerful gaming desktop featuring AMD Ryzen 7, 32GB RAM, and a 1TB SSD for lightning-fast performance.",
+            price: 1400, 
+            image: "pc.jpg", 
+            specs: ["AMD Ryzen 7", "32GB RAM", "1TB SSD"],
+            available: true
+        }
+    };
+
     
-    const product = products[productId] || products['1'];
-    
+
+    // ابحث عن المنتج بالمعرف المستلم (سواء كان رقم أو يبدأ بـ 'p')
+    const product = products[productId] || productDetails[productId];
+
+    console.log("Found product:", product); // سجل المنتج الذي تم العثور عليه (أو undefined)
+
+
     if (product) {
+        // تأكد أن قيمة السعر هي رقم قبل استخدام toFixed
+        const price = typeof product.price === 'string' ? parseFloat(product.price.replace('$', '')) : product.price;
+        if (isNaN(price)) {
+             console.error("Invalid price found for product", product);
+             document.getElementById('product-price').textContent = 'N/A';
+        } else {
+            document.getElementById('product-price').textContent = `$${price.toFixed(2)}`;
+        }
+
         document.getElementById('product-title').textContent = product.name;
-        document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
         document.getElementById('product-description').textContent = product.description;
-        
+
         const specsList = document.getElementById('specs-list');
-        specsList.innerHTML = '';
-        product.specs.forEach(spec => {
+        specsList.innerHTML = ''; // امسح المواصفات القديمة إذا وجدت
+
+        // تأكد أن specs موجودة وأنها مصفوفة
+        if (product.specs && Array.isArray(product.specs)) {
+             product.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.textContent = spec;
+                specsList.appendChild(li);
+            });
+        } else {
+            // أضف رسالة إذا لم تتوفر المواصفات
             const li = document.createElement('li');
-            li.textContent = spec;
+            li.textContent = 'No specifications available.';
             specsList.appendChild(li);
-        });
-        
+        }
+
         const availability = document.getElementById('availability-status');
-        if (product.available) {
+        // تأكد أن available موجودة وقيمة منطقية (boolean)
+        if (typeof product.available === 'boolean' && product.available) {
             availability.textContent = 'Available';
-            availability.className = 'available';
+            availability.className = 'available'; // لتطبيق الستايل الأخضر
+            document.getElementById('add-to-cart-btn').disabled = false; // تمكين زر الإضافة
         } else {
             availability.textContent = 'Out of Stock';
-            availability.className = 'unavailable';
+            availability.className = 'unavailable'; // لتطبيق الستايل الأحمر أو أي ستايل آخر
+            document.getElementById('add-to-cart-btn').disabled = true; // تعطيل زر الإضافة
         }
-        
-        document.getElementById('main-product-image').src = product.image;
+
+        // تأكد من مسار الصورة صحيح قبل تعيينه
+        const mainImageElement = document.getElementById('main-product-image');
+         if (mainImageElement) {
+            mainImageElement.src = product.image;
+            mainImageElement.alt = product.name; // تحسين قابلية الوصول
+         }
+
+        // تحديث الصور المصغرة (thumbnails) - تستخدم نفس الصورة الرئيسية حالياً
         document.querySelectorAll('.thumbnail').forEach((img, index) => {
-            img.src = product.image; 
+             img.src = product.image; // حالياً، استخدم نفس الصورة الرئيسية
+             img.alt = `${product.name} thumbnail ${index + 1}`; // تحسين قابلية الوصول
         });
-        
-        // إضافة حدث النقر على زر "Add to Cart"
-        document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-            const quantity = parseInt(document.querySelector('.quantity-input').value);
-            addToCart(productId, product.name, product.price, product.image, quantity);
-        });
+
+
+         // مسح السعر الأصلي والخصم إذا كانت البيانات غير متوفرة
+        const originalPriceElement = document.querySelector('.original-price');
+        const discountElement = document.querySelector('.discount');
+
+        if (originalPriceElement) {
+            originalPriceElement.textContent = '';
+        }
+        if (discountElement) {
+            discountElement.textContent = '';
+        }
+
+
+    } else {
+        // إذا لم يتم العثور على المنتج
+        document.getElementById('product-title').textContent = 'Product Not Found';
+        document.getElementById('product-price').textContent = '';
+        document.getElementById('product-description').textContent = 'The requested product could not be found.';
+        document.getElementById('specs-list').innerHTML = ''; // مسح قائمة المواصفات
+        document.getElementById('availability-status').textContent = 'Unknown Status'; // حالة افتراضية
+        document.getElementById('availability-status').className = ''; // إزالة أي كلاسات ستايل
+        document.getElementById('main-product-image').src = ''; // مسح الصورة
+        document.querySelectorAll('.thumbnail').forEach(img => img.src = ''); // مسح الصور المصغرة
+        document.getElementById('add-to-cart-btn').disabled = true; // تعطيل زر الإضافة
+         console.error("Product with ID " + productId + " not found."); // رسالة خطأ في الكونسول
     }
+
+const oldCartSection = document.querySelector('.add-to-cart');
+if (oldCartSection) {
+    oldCartSection.remove();
 }
+
+// ثانياً: إنشاء الواجهة الجديدة
+const addToCartContainer = document.createElement('div');
+addToCartContainer.className = 'add-to-cart d-flex align-items-center gap-2 mt-3';
+
+// عنصر تحديد الكمية
+const quantitySelector = document.createElement('div');
+quantitySelector.className = 'quantity-selector d-flex align-items-center border rounded overflow-hidden';
+
+// زر -
+const minusBtn = document.createElement('button');
+minusBtn.className = 'quantity-btn btn btn-light';
+minusBtn.textContent = '-';
+
+// مدخل الرقم
+const quantityInput = document.createElement('input');
+quantityInput.type = 'number';
+quantityInput.value = 1;
+quantityInput.min = 1;
+quantityInput.className = 'quantity-input form-control text-center';
+quantityInput.style.width = '60px';
+
+// زر +
+const plusBtn = document.createElement('button');
+plusBtn.className = 'quantity-btn btn btn-light';
+plusBtn.textContent = '+';
+
+quantitySelector.appendChild(minusBtn);
+quantitySelector.appendChild(quantityInput);
+quantitySelector.appendChild(plusBtn);
+
+// زر الإضافة للسلة
+const addBtn = document.createElement('button');
+addBtn.id = 'add-to-cart-btn';
+addBtn.className = 'btn btn-danger d-flex align-items-center';
+addBtn.innerHTML = '<i class="fas fa-cart-plus me-2"></i> Add to Cart';
+addBtn.dataset.productId = productId;
+
+// إدخال العناصر معًا
+addToCartContainer.appendChild(quantitySelector);
+addToCartContainer.appendChild(addBtn);
+
+// إضافة العنصر للقسم المناسب
+document.querySelector('.product-info').appendChild(addToCartContainer);
+
+// الأحداث
+plusBtn.addEventListener('click', () => {
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+});
+
+minusBtn.addEventListener('click', () => {
+    if (parseInt(quantityInput.value) > 1) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+    }
+});
+
+addBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    const quantity = parseInt(quantityInput.value);
+    const productName = document.getElementById('product-title').textContent;
+    const productPriceText = document.getElementById('product-price').textContent;
+    const productPrice = parseFloat(productPriceText.replace('$', ''));
+    const productImage = document.getElementById('main-product-image').src;
+
+    if (isNaN(productPrice)) {
+        alert("The price is not valid for this product.");
+        return;
+    }
+
+    addToCart(productId, productName, productPrice, productImage, quantity);
+    console.log(`Product added: ${productName} (${quantity})`);
+});
+
+
+}
+
+// تأكد من استدعاء هذه الدالة عند تحميل محتوى الصفحة
+document.addEventListener('DOMContentLoaded', initProductDetailPage);
+
+// ... بقية كود java.js (مثل دالة searchProducts والدوال المتعلقة بها) ...
+
 
 // تهيئة صفحة الدفع
 function initCheckoutPage() {
@@ -397,8 +640,9 @@ function initCheckoutPage() {
 }
 
 // تهيئة الصفحة عند التحميل
-document.addEventListener('DOMContentLoaded', function() {
-    updateCartCount();
+document.addEventListener('DOMContentLoaded', function() { // هنا تم إضافة القوس '{'
+    updateCartCount(); 
+}); 
     
     if (window.location.pathname.includes('product-detail.html')) {
         initProductDetailPage();
@@ -423,22 +667,77 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // إضافة أحداث النقر على المنتجات لإضافتها إلى السلة مباشرة
-    document.querySelectorAll('.product-item').forEach(item => {
-        const addBtn = document.createElement('button');
-        addBtn.className = 'btn-add-to-cart';
-        addBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-        addBtn.addEventListener('click', function() {
-            const productId = item.querySelector('.btn-details').getAttribute('href').split('=')[1];
-            const productName = item.querySelector('h3').textContent;
-            const productPrice = parseFloat(item.querySelector('.price').textContent.replace('$', ''));
-            const productImage = item.querySelector('img').src;
-            
-            addToCart(productId, productName, productPrice, productImage);
+    document.addEventListener('DOMContentLoaded', function() {
+        // ... (الدوال والمتغيرات الأخرى الخاصة بـ java.js مثل تعريف products و productDetails ودالة addToCart) ...
+    
+        // إضافة أحداث النقر على المنتجات لإضافتها إلى السلة مباشرة
+        document.querySelectorAll('.product-item').forEach(item => {
+            // تحقق مما إذا كان زر "Add to Cart" موجوداً بالفعل لهذا المنتج
+            if (item.querySelector('.btn-add-to-cart')) {
+                //console.log('Add to cart button already exists for this item.'); // يمكن إلغاء التعليق للتصحيح
+                return; // تخطي هذا العنصر إذا كان الزر موجوداً بالفعل
+            }
+    
+            // محاولة استخراج بيانات المنتج من العناصر الموجودة
+            const detailLink = item.querySelector('.btn-details');
+            const nameElement = item.querySelector('h3');
+            const priceElement = item.querySelector('.price');
+            const imgElement = item.querySelector('img');
+    
+            // تحقق من وجود العناصر الأساسية
+            if (!detailLink || !nameElement || !priceElement || !imgElement) {
+                console.warn('Skipping product item due to missing elements:', item);
+                return; // تخطي هذا العنصر إذا لم تتوفر البيانات الأساسية
+            }
+    
+            // استخراج productId بشكل أكثر أماناً من رابط التفاصيل
+            let productId = null;
+            const href = detailLink.getAttribute('href');
+            if (href) {
+                const url = new URL(href, window.location.origin); // إنشاء كائن URL للتحليل بسهولة
+                productId = url.searchParams.get('id'); // استخراج قيمة المعامل 'id'
+            }
+    
+            if (!productId) {
+                console.warn('Skipping product item due to missing product ID in href:', href, item);
+                return; // تخطي هذا العنصر إذا لم يتم العثور على المعرف
+            }
+    
+            const productName = nameElement.textContent.trim(); // استخدم trim لإزالة المسافات البيضاء
+            const productPriceText = priceElement.textContent.replace(/[^\d.-]/g, ''); // إزالة كل شيء ما عدا الأرقام، النقطة، والشرطة (للسالب إذا وجد)
+            const productPrice = parseFloat(productPriceText); // تحويل النص النظيف إلى رقم عشري
+    
+            // تحقق مما إذا كان السعر صالحاً
+            if (isNaN(productPrice)) {
+                 console.warn('Skipping product item due to invalid price:', priceElement.textContent, item);
+                 return; // تخطي هذا العنصر إذا كان السعر غير صالح
+            }
+    
+            const productImage = imgElement.src; // مسار الصورة
+    
+            // إنشاء زر "Add to Cart"
+            const addBtn = document.createElement('button');
+            addBtn.className = 'btn-add-to-cart';
+            // استخدم Font Awesome icon وكتابة Add to Cart
+            addBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+    
+    
+            // إضافة مستمع الحدث لزر النقر
+            addBtn.addEventListener('click', function(event) {
+                event.preventDefault(); // منع السلوك الافتراضي للزر إذا كان داخل فورم مثلاً (غالباً ليس هنا لكن ممارسة جيدة)
+                // عند النقر، استدعاء دالة addToCart مع البيانات المستخرجة
+                // افترض أن دالة addToCart(id, name, price, image) معرفة في مكان آخر
+                addToCart(productId, productName, productPrice, productImage);
+                console.log(`Product added to cart: ID=${productId}, Name=${productName}`); // رسالة للتصحيح
+                // يمكنك إضافة رسالة تأكيد للمستخدم هنا (مثال: alert أو رسالة مؤقتة على الشاشة)
+            });
+    
+            // إضافة الزر إلى عنصر المنتج
+            item.appendChild(addBtn);
         });
-        
-        item.appendChild(addBtn);
+    
+       
     });
-});
 
 
 
