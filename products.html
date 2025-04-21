@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - ElectroMart</title> 
+    <title>Products - ElectroMart</title>
     <link rel="stylesheet" href="Styel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -11,7 +11,7 @@
     <header>
         <h1>ElectroMart</h1>
          <nav>
-            <ul>    
+            <ul>
                 <li><a href="Detail.html">Details</a></li>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html" class="active">Products</a></li>
@@ -26,22 +26,53 @@
                 <li><a href="checkout.html">Check Out</a></li>
             </ul>
         </nav>
+        
     </header>
+    <style>
+      .banner {
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      background: linear-gradient(135deg, #827674, #ff6f61);
+      padding: 40px;
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    </style>
+
+    <div class="banner">
+      <h1>Budget-Friendly Deals at ElectroMart</h1>
+      <h2>Everything under $5000</h2>
+      <p style="margin-top: 15px;">Save big on mobiles, TVs, laptops, and computers — new & used!</p>
+    </div>
 
     <main>
+      <div class="container">
         <div class="sidebar">
-            <h3>Categories</h3>
-            <ul class="sidebar-categories">
-              <li><a href="javascript:void(0);" category="all">All Products</a></li>
-              <li><a href="javascript:void(0);" category="mobiles">Mobiles</a></li>
-              <li><a href="javascript:void(0);" category="tvs">TVs</a></li>
-              <li><a href="javascript:void(0);" category="laptops">Laptops</a></li>
-              <li><a href="javascript:void(0);" category="computers">Computers</a></li>
-              <li><a href="javascript:void(0);" category="components">PC Components</a></li>
-            </ul>
-          </div>
-          
-        
+          <h3>Categories</h3>
+          <ul class="sidebar-categories">
+            <li><a href="javascript:void(0);" category="all">All Products</a></li>
+            <li><a href="javascript:void(0);" category="mobiles">Mobiles</a></li>
+            <li><a href="javascript:void(0);" category="tvs">TVs</a></li>
+            <li><a href="javascript:void(0);" category="laptops">Laptops</a></li>
+            <li><a href="javascript:void(0);" category="computers">Computers</a></li>
+            <li><a href="javascript:void(0);" category="components">PC Components</a></li>
+          </ul>
+        </div>
+        <div class="main-content">
+          <!-- المحتوى الرئيسي هنا -->
+        </div>
+      </div>
+      
+
+
         <div class="main-content">
             <!-- إضافة مربع البحث هنا -->
             <div class="search-container">
@@ -50,18 +81,18 @@
                     <i class="fas fa-search"></i> Search
                 </button>
             </div>
-            
+
             <div class="product-grid">
-                <!-- بقية كود المنتجات كما هو -->
+                <!-- المنتجات مع تحديث الروابط -->
                 <article class="product-item"  category="mobiles">
                     <a href="product-detail.html?id=1">
-                      <img src="Samsung Galaxy Z Flip3-1.jpg" alt="Samsung Galaxy Z Flip3"> 
+                      <img src="Samsung Galaxy Z Flip3-1.jpg" alt="Samsung Galaxy Z Flip3">
                     </a>
-                    <h3>Samsung Galaxy Z Flip3</h3> 
-                    <p class="price">$1200</p> 
-                    <a href="product-detail.html?id=1" class="btn-details">View Details</a> 
+                    <h3>Samsung Galaxy Z Flip3</h3>
+                    <p class="price">$1200</p>
+                    <a href="product-detail.html?id=1" class="btn-details">View Details</a>
                   </article>
-                  
+
                   <article class="product-item"  category="mobiles">
                     <a href="product-detail.html?id=2">
                       <img src="SAMSUNG Galaxy S24 Ultra, AI Android.webp" alt="Samsung Galaxy S24 Ultra, AI Android">
@@ -70,7 +101,7 @@
                     <p class="price">$1500</p>
                     <a href="product-detail.html?id=2" class="btn-details">View Details</a>
                   </article>
-                  
+
                   <article class="product-item" category="mobiles">
                     <a href="product-detail.html?id=3">
                       <img src="iphone.png" alt="iphone 16 pro max">
@@ -79,7 +110,7 @@
                     <p class="price">$1500</p>
                     <a href="product-detail.html?id=3" class="btn-details">View Details</a>
                   </article>
-                  
+
                   <article class="product-item"  category="mobiles">
                     <a href="product-detail.html?id=4">
                       <img src="eg-galaxy-a55-5g-sm-a556-sm-a556elvwmea-thumb-541836667.avif" alt="a55">
@@ -88,7 +119,7 @@
                     <p class="price">$1500</p>
                     <a href="product-detail.html?id=4" class="btn-details">View Details</a>
                   </article>
-                  
+
                   <article class="product-item"  category="mobiles">
                     <a href="product-detail.html?id=5">
                       <img src="Apple-iPhone-14.jpg" alt="iPhone 14">
@@ -97,7 +128,7 @@
                     <p class="price">$500</p>
                     <a href="product-detail.html?id=5" class="btn-details">View Details</a>
                   </article>
-                  
+
                   <article class="product-item"  category="mobiles">
                     <a href="product-detail.html?id=6">
                       <img src="iphone 16 plus.jpeg" alt="Computer Monitor">
@@ -106,132 +137,96 @@
                     <p class="price">$900</p>
                     <a href="product-detail.html?id=6" class="btn-details">View Details</a>
                   </article>
-                  
+
                   <article class="product-item"  category="mobiles">
-                    <a href="product-detail.html?id=6">
-                      <img src="iphone 15 pro max.jpg" alt="Computer Monitor">
+                    <a href="product-detail.html?id=p1"> 
+                      <img src="iphone 15 pro max.jpg" alt="iphone 15 pro max">
                     </a>
                     <h3>iphone 15 pro max</h3>
                     <p class="price">$1100</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p1" class="btn-details">View Details</a> 
                   </article>
-                  
+
                   <article class="product-item" category="tvs">
-                    <a href="product-detail.html?id=6">
+                    <a href="product-detail.html?id=p2"> 
                       <img src="lg-tv.avif" alt="LG TV">
                     </a>
                     <h3>LG TV</h3>
                     <p class="price">$2000</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p2" class="btn-details">View Details</a> 
                   </article>
-                  
-                  <article class="product-item" data-category="tvs">
-                    <a href="product-detail.html?id=6">
+
+                  <article class="product-item" category="tvs">
+                    <a href="product-detail.html?id=p3"> 
                       <img src="Samsaoung-tv.avif" alt="SAMSUNG TV">
                     </a>
                     <h3>Samsung TV</h3>
                     <p class="price">$1300</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p3" class="btn-details">View Details</a> 
                   </article>
-                  
-                  <article class="product-item" category="tvs">
-                    <a href="product-detail.html?id=6">
-                      <img src="Samsung-Crystal-uhd.jpg" alt="Samsung TV">
-                    </a>
-                    <h3>Samsung Crystal uhd</h3>
-                    <p class="price">$1300</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
-                  </article>
-                  
+
                   <article class="product-item" category="components">
-                    <a href="product-detail.html?id=6">
-                      <img src="Arktek-NVIDIA-GeForce-GTX-750-TI-4GB.jpg" alt="Computer Monitor">
+                    <a href="product-detail.html?id=p4"> 
+                      <img src="Arktek-NVIDIA-GeForce-GTX-750-TI-4GB.jpg" alt="Arktek GTX 750 TI">
                     </a>
                     <h3>27-Inch Arktek NVIDIA GeForce GTX 750 TI 4GB GDDR5 128-Bit </h3>
                     <p class="price">$300</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p4" class="btn-details">View Details</a> 
                   </article>
-                  
+
                   <article class="product-item" category="components">
-                    <a href="product-detail.html?id=6">
-                      <img src="4060.jpg" alt="Computer Monitor">
+                    <a href="product-detail.html?id=p5"> 
+                      <img src="4060.jpg" alt="MSI RTX 4060">
                     </a>
                     <h3>MSI Gaming GeForce RTX 4060 8GB GDRR6 128-Bit </h3>
                     <p class="price">$500</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p5" class="btn-details">View Details</a> 
                   </article>
-                  
+
                   <article class="product-item" category="components">
-                    <a href="product-detail.html?id=6">
-                      <img src="ZOTAC-GAMING-GeForce-RTX-4080-Super-Trinity-White-OC-16GB.jpg" alt="Computer Monitor">
+                    <a href="product-detail.html?id=p6"> 
+                      <img src="ZOTAC-GAMING-GeForce-RTX-4080-Super-Trinity-White-OC-16GB.jpg" alt="ZOTAC RTX 4080 Super">
                     </a>
                     <h3>ZOTAC GAMING GeForce RTX 4080 Super Trinity White OC 16GB</h3>
                     <p class="price">$1300</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p6" class="btn-details">View Details</a> 
                   </article>
-                  
+
                   <article class="product-item" category="laptops">
-                    <a href="product-detail.html?id=6">
-                      <img src="Laptop1.jpg" alt="Computer Monitor">
+                    <a href="product-detail.html?id=p7"> 
+                      <img src="Laptop1.jpg" alt="HP Victus Gaming Laptop">
                     </a>
                     <h3>HP Victus Gaming Laptop</h3>
                     <p class="price">$1300</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p7" class="btn-details">View Details</a> 
                   </article>
-                  
+
                   <article class="product-item" category="laptops">
-                    <a href="product-detail.html?id=6">
-                      <img src="Latop2.jpg" alt="Computer Monitor">
+                    <a href="product-detail.html?id=p8"> 
+                      <img src="Latop2.jpg" alt="ASUS TUF Gaming A15">
                     </a>
                     <h3>ASUS TUF Gaming A15 FA506NFR</h3>
                     <p class="price">$1000</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p8" class="btn-details">View Details</a> 
                   </article>
-                  
+
                   <article class="product-item" category="computers">
-                    <a href="product-detail.html?id=6">
+                    <a href="product-detail.html?id=p9"> 
                       <img src="pc.jpg" alt="Lenovo IdeaCentre Gaming5 14IOB6">
                     </a>
                     <h3>Lenovo IdeaCentre Gaming5 14IOB6</h3>
                     <p class="price">$14000</p>
-                    <a href="product-detail.html?id=6" class="btn-details">View Details</a>
+                    <a href="product-detail.html?id=p9" class="btn-details">View Details</a> 
                   </article>
-                  
-            </div> 
+
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 ElectroMart. All rights reserved.</p>
+        <p>© 2025 ElectroMart. All rights reserved.</p>
     </footer>
 
-    <script>
-        // دالة البحث عن المنتجات
-        function searchProducts() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toUpperCase();
-            const productGrid = document.querySelector('.product-grid');
-            const products = productGrid.getElementsByClassName('product-item');
-            
-            for (let i = 0; i < products.length; i++) {
-                const h3 = products[i].getElementsByTagName('h3')[0];
-                const txtValue = h3.textContent || h3.innerText;
-                
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    products[i].style.display = "";
-                } else {
-                    products[i].style.display = "none";
-                }
-            }
-        }
-        
-        // جعل البحث يعمل عند الضغط على Enter
-        document.getElementById('searchInput').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                searchProducts();
-            }
-        });
-    </script>
 
           <script src="java.js"></script>
 </body>
