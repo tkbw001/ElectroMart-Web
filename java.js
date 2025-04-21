@@ -380,7 +380,7 @@ function initProductDetailPage() {
             name: "Samsung TV", // Note: This matches one of the Samsung TVs in products.html
             description: "The Samsung 55-inch 4K Crystal UHD TV offers vibrant colors and clarity for an immersive viewing experience.",
             price: 1300,
-            image: "Samsaoung-tv.avif", // Make sure this path is correct
+            image: "Samsaoung-tv.avif", 
             specs: ["55-inch 4K Crystal UHD", "Vibrant Colors"],
             available: true
         },
@@ -388,7 +388,7 @@ function initProductDetailPage() {
             name: "Arktek NVIDIA GeForce GTX 750 TI",
             description: "A high-performance graphics card perfect for gaming and media production, featuring 4GB of GDDR5 memory.",
             price: 300,
-            image: "Arktek-NVIDIA-GeForce-GTX-750-TI-4GB.jpg", // Make sure this path is correct
+            image: "Arktek-NVIDIA-GeForce-GTX-750-TI-4GB.jpg", 
             specs: ["4GB GDDR5", "128-Bit Interface"],
             available: true
         },
@@ -396,7 +396,7 @@ function initProductDetailPage() {
             name: "MSI Gaming GeForce RTX 4060",
             description: "An advanced graphics card with real-time ray tracing and AI-enhanced graphics, perfect for gaming at 4K resolution.",
             price: 500,
-            image: "4060.jpg", // Make sure this path is correct
+            image: "4060.jpg", 
             specs: ["8GB GDDR6", "128-Bit Interface", "Real-time Ray Tracing"],
             available: true
         },
@@ -404,7 +404,7 @@ function initProductDetailPage() {
             name: "ZOTAC GAMING GeForce RTX 4080 Super",
             description: "A top-tier GPU for gamers and professionals, offering exceptional performance with 16GB of GDDR6X memory.",
             price: 1300,
-            image: "ZOTAC-GAMING-GeForce-RTX-4080-Super-Trinity-White-OC-16GB.jpg", // Make sure this path is correct
+            image: "ZOTAC-GAMING-GeForce-RTX-4080-Super-Trinity-White-OC-16GB.jpg", 
             specs: ["16GB GDDR6X"],
             available: false
         },
@@ -412,7 +412,7 @@ function initProductDetailPage() {
             name: "HP Victus Gaming Laptop",
             description: "The HP Victus Gaming Laptop is powered by an Intel i7 processor, 16GB RAM, and a 512GB SSD for an unbeatable gaming experience.",
             price: 1300,
-            image: "Laptop1.jpg", // Make sure this path is correct
+            image: "Laptop1.jpg", 
             specs: ["Intel i7 Processor", "16GB RAM", "512GB SSD"],
             available: true
         },
@@ -420,7 +420,7 @@ function initProductDetailPage() {
             name: "ASUS TUF Gaming A15 FA506NFR",
             description: "This gaming laptop features an AMD Ryzen 7, 16GB RAM, and NVIDIA GeForce RTX 3060 for smooth gameplay at 1080p.",
             price: 1000,
-            image: "Latop2.jpg", // Make sure this path is correct
+            image: "Latop2.jpg", 
             specs: ["AMD Ryzen 7", "16GB RAM", "NVIDIA GeForce RTX 3060"],
             available: true
         },
