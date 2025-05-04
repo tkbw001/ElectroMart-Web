@@ -1,114 +1,156 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- Sign Up Form Validation ---
-    const signupForm = document.getElementById('signup-form');
-    if (signupForm) {
-        signupForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            console.log("Signup form submitted");
+  // --- Sign Up Form Validation ---
+const signupForm = document.getElementById('signup-form');
 
-            let isValid = true;
-            const username = document.getElementById('username');
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-            const confirmPassword = document.getElementById('confirm-password');
-            const usernameError = document.getElementById('username-error');
-            const emailError = document.getElementById('email-error');
-            const passwordError = document.getElementById('password-error');
-            const confirmPasswordError = document.getElementById('confirm-password-error');
+if (signupForm) {
+    signupForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        console.log("Signup form submitted");
 
-            // Reset errors
-            usernameError.textContent = '';
-            emailError.textContent = '';
-            passwordError.textContent = '';
-            confirmPasswordError.textContent = '';
-            username.style.borderColor = '#ccc';
-            email.style.borderColor = '#ccc';
-            password.style.borderColor = '#ccc';
-            confirmPassword.style.borderColor = '#ccc';
+        let isValid = true;
 
-            // Validation
-            if (username.value.trim() === '') {
-                usernameError.textContent = 'Username is required.';
-                username.style.borderColor = 'red';
-                isValid = false;
-            }
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
 
-            if (email.value.trim() === '') {
-                emailError.textContent = 'Email is required.';
-                email.style.borderColor = 'red';
-                isValid = false;
-            } else if (!/\S+@\S+\.\S+/.test(email.value)) {
-                emailError.textContent = 'Please enter a valid email address.';
-                email.style.borderColor = 'red';
-                isValid = false;
-            }
+        const usernameError = document.getElementById('username-error');
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
+        const confirmPasswordError = document.getElementById('confirm-password-error');
 
-            if (password.value.trim() === '') {
-                passwordError.textContent = 'Password is required.';
-                password.style.borderColor = 'red';
-                isValid = false;
-            } else if (password.value.length < 6) {
-                passwordError.textContent = 'Password must be at least 6 characters long.';
-                password.style.borderColor = 'red';
-                isValid = false;
-            }
+        // Reset previous errors
+        usernameError.textContent = '';
+        emailError.textContent = '';
+        passwordError.textContent = '';
+        confirmPasswordError.textContent = '';
+        username.style.borderColor = '#ccc';
+        email.style.borderColor = '#ccc';
+        password.style.borderColor = '#ccc';
+        confirmPassword.style.borderColor = '#ccc';
 
-            if (confirmPassword.value.trim() === '') {
-                confirmPasswordError.textContent = 'Please confirm your password.';
-                confirmPassword.style.borderColor = 'red';
-                isValid = false;
-            } else if (password.value !== confirmPassword.value) {
-                confirmPasswordError.textContent = 'Passwords do not match.';
-                confirmPassword.style.borderColor = 'red';
-                isValid = false;
-            }
+        // Username validation
+        if (username.value.trim() === '') {
+            usernameError.textContent = 'Username is required.';
+            username.style.borderColor = 'red';
+            isValid = false;
+        }
 
-            if (isValid) {
-                alert('Sign up successful! (Simulation)');
-                signupForm.reset();
-            }
-        });
-    }
+        // Email validation
+        const emailPattern = /^[^\s@]+@[a-zA-Z]{4,10}\.[a-zA-Z]{2,3}$/;
+        if (email.value.trim() === '') {
+            emailError.textContent = 'Email is required.';
+            email.style.borderColor = 'red';
+            isValid = false;
+        } else if (!emailPattern.test(email.value.trim())) {
+            emailError.textContent = 'Please enter a valid email address.';
+            email.style.borderColor = 'red';
+            isValid = false;
+        }
 
-    // --- Log In Form Validation ---
-    const loginForm = document.getElementById('login-form');
-    if (loginForm) {
-        loginForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            console.log("Login form submitted");
+        // Password validation
+        if (password.value.trim() === '') {
+            passwordError.textContent = 'Password is required.';
+            password.style.borderColor = 'red';
+            isValid = false;
+        } else if (password.value.length < 6) {
+            passwordError.textContent = 'Password must be at least 6 characters.';
+            password.style.borderColor = 'red';
+            isValid = false;
+        }
 
-            let isValid = true;
-            const loginEmail = document.getElementById('login-email');
-            const loginPassword = document.getElementById('login-password');
-            const loginEmailError = document.getElementById('login-email-error');
-            const loginPasswordError = document.getElementById('login-password-error');
+        // Confirm password validation
+        if (confirmPassword.value.trim() === '') {
+            confirmPasswordError.textContent = 'Please confirm your password.';
+            confirmPassword.style.borderColor = 'red';
+            isValid = false;
+        } else if (password.value !== confirmPassword.value) {
+            confirmPasswordError.textContent = 'Passwords do not match.';
+            confirmPassword.style.borderColor = 'red';
+            isValid = false;
+        }
 
-            // Reset errors
-            loginEmailError.textContent = '';
-            loginPasswordError.textContent = '';
-            loginEmail.style.borderColor = '#ccc';
-            loginPassword.style.borderColor = '#ccc';
+        // Only redirect if all inputs are valid
+        if (isValid) {
+            alert('Sign up successful!');
+            window.location.href = 'index.html';
+        }
+    });
+}
 
-            if (loginEmail.value.trim() === '') {
-                loginEmailError.textContent = 'Email or Username is required.';
-                loginEmail.style.borderColor = 'red';
-                isValid = false;
-            }
 
-            if (loginPassword.value.trim() === '') {
-                loginPasswordError.textContent = 'Password is required.';
-                loginPassword.style.borderColor = 'red';
-                isValid = false;
-            }
+        
+// --- Log In Form Validation ---
+const loginForm = document.getElementById('login-form');
 
-            if (isValid) {
-                alert('Log in successful! (Simulation)');
-                loginForm.reset();
-            }
-        });
-    }
+if (loginForm) {
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        console.log("Login form submitted");
+
+        let isValid = true;
+
+        const loginusername = document.getElementById('login-username');
+        const loginEmail = document.getElementById('login-email');
+        const loginPassword = document.getElementById('login-password');
+
+        const loginusernameError = document.getElementById('login-username-error');
+        const loginEmailError = document.getElementById('login-email-error');
+        const loginPasswordError = document.getElementById('login-password-error');
+
+        // Reset previous errors
+        loginusernameError.textContent = '';
+        loginEmailError.textContent = '';
+        loginPasswordError.textContent = '';
+
+        loginusername.style.borderColor = '#ccc';
+        loginEmail.style.borderColor = '#ccc';
+        loginPassword.style.borderColor = '#ccc';
+
+        // Username validation
+        if (loginusername.value.trim() === '') {
+            loginusernameError.textContent = 'Username is required.';
+            loginusername.style.borderColor = 'red';
+            isValid = false;
+        }
+
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (loginEmail.value.trim() === '') {
+            loginEmailError.textContent = 'Email is required.';
+            loginEmail.style.borderColor = 'red';
+            isValid = false;
+        } else if (!emailPattern.test(loginEmail.value.trim())) {
+            loginEmailError.textContent = 'Please enter a valid email.';
+            loginEmail.style.borderColor = 'red';
+            isValid = false;
+        }
+
+        // Password validation
+        if (loginPassword.value.trim() === '') {
+            loginPasswordError.textContent = 'Password is required.';
+            loginPassword.style.borderColor = 'red';
+            isValid = false;
+        } else if (loginPassword.value.length < 6) {
+            loginPasswordError.textContent = 'Password must be at least 6 characters.';
+            loginPassword.style.borderColor = 'red';
+            isValid = false;
+        }
+
+        //  لو كله تمام، نفذ الدخول
+        if (isValid) {
+            alert('Log in successful!');
+            window.location.href = 'index.html';
+        } else {
+            console.log("Validation failed, staying on page.");
+        }
+        
+    });
+}
+
+
 
     // --- Add to Cart Button ---
     const addToCartButton = document.getElementById('add-to-cart-btn');
@@ -126,47 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const searchCategory = $('#searchCategory').val();
             $('#productResults').html('<p>Searching...</p>');
 
-            $.ajax({
-                url: 'searchProducts.php',
-                type: 'POST',
-                data: {
-                    searchKeyword: searchKeyword,
-                    searchCategory: searchCategory
-                },
-                dataType: 'json',
-                success: function (response) {
-                    $('#productResults').html('');
-                    if (response && response.length > 0) {
-                        $.each(response, function (index, product) {
-                            const productHtml = `
-                                <article class="product-item">
-                                    <img src="${product.ImageURL || 'https://placehold.co/100x100?text=No+Image'}" alt="${product.Name || 'Product Image'}">
-                                    <div class="product-item-info">
-                                        <h4>${product.Name || 'N/A'}</h4>
-                                        ${product.Brand ? '<p><small>Brand: ' + product.Brand + '</small></p>' : ''}
-                                        <p class="price">$${parseFloat(product.Price || 0).toFixed(2)}</p>
-                                        <a href="product-detail.html?id=${product.ProductID || ''}" class="btn-details">View Details</a>
-                                    </div>
-                                </article>
-                            `;
-                            $('#productResults').append(productHtml);
-                        });
-                    } else {
-                        let message = 'No products found matching your search';
-                        if (searchKeyword) message += ': "' + searchKeyword + '"';
-                        if (searchCategory !== 'all') {
-                            const categoryText = $('#searchCategory option:selected').text();
-                            message += ' in category "' + categoryText + '"';
-                        }
-                        $('#productResults').html('<p>' + message + '.</p>');
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error("AJAX Error:", status, error);
-                    console.error("Response Text:", xhr.responseText);
-                    $('#productResults').html('<p>Sorry, an error occurred while searching. Please check the console (F12) or try again later.</p>');
-                }
-            });
+        
         });
     });
 
@@ -264,7 +266,7 @@ function renderCartItems() {
     renderCheckoutItems();
 }
 
-
+// checkout نظام بتاع صفحه 
 function renderCheckoutItems() {
     const checkoutItemsList = document.getElementById('checkout-items');
     if (!checkoutItemsList) return;
@@ -301,12 +303,13 @@ function renderCheckoutItems() {
 
 // تهيئة صفحة تفاصيل المنتج
 function initProductDetailPage() {
+    //product-detail.html?id=2 هذا الجزء يقرأـ id من رابط الصفحة مثل
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id'); // احصل على المعرف من الرابط
 
     console.log("Attempting to load product with ID:", productId); // سجل المعرف للتحقق
 
-    // بيانات المنتجات الأولى (معرفات رقمية)
+    // تفاصيل المنتجات الأولى (معرفات رقمية)
     const products = {
         '1': {
             name: 'Samsung Galaxy Z Flip3',
@@ -451,7 +454,7 @@ function initProductDetailPage() {
         } else {
             document.getElementById('product-price').textContent = `$${price.toFixed(2)}`;
         }
-
+        // العنوان + الوصف
         document.getElementById('product-title').textContent = product.name;
         document.getElementById('product-description').textContent = product.description;
 
@@ -461,17 +464,18 @@ function initProductDetailPage() {
         // تأكد أن specs موجودة وأنها مصفوفة
         if (product.specs && Array.isArray(product.specs)) {
              product.specs.forEach(spec => {
-                const li = document.createElement('li');
+                const li = document.createElement('specs-list');
                 li.textContent = spec;
                 specsList.appendChild(li);
             });
         } else {
             // أضف رسالة إذا لم تتوفر المواصفات
-            const li = document.createElement('li');
+            const li = document.createElement('specs-list');
             li.textContent = 'No specifications available.';
             specsList.appendChild(li);
         }
 
+            //الحالة (متوفر أو غير متوفر) 
         const availability = document.getElementById('availability-status');
         // تأكد أن available موجودة وقيمة منطقية (boolean)
         if (typeof product.available === 'boolean' && product.available) {
@@ -498,7 +502,7 @@ function initProductDetailPage() {
         });
 
 
-         // مسح السعر الأصلي والخصم إذا كانت البيانات غير متوفرة
+         // إذا المنتج غير موجود
         const originalPriceElement = document.querySelector('.original-price');
         const discountElement = document.querySelector('.discount');
 
@@ -511,7 +515,7 @@ function initProductDetailPage() {
 
 
     } else {
-        // إذا لم يتم العثور على المنتج
+        //لو المنتج مش موجود 
         document.getElementById('product-title').textContent = 'Product Not Found';
         document.getElementById('product-price').textContent = '';
         document.getElementById('product-description').textContent = 'The requested product could not be found.';
@@ -531,15 +535,15 @@ if (oldCartSection) {
 
 // ثانياً: إنشاء الواجهة الجديدة
 const addToCartContainer = document.createElement('div');
-addToCartContainer.className = 'add-to-cart d-flex align-items-center gap-2 mt-3';
+addToCartContainer.className = 'add-to-cart ';
 
 // عنصر تحديد الكمية
 const quantitySelector = document.createElement('div');
-quantitySelector.className = 'quantity-selector d-flex align-items-center border rounded overflow-hidden';
+quantitySelector.className = 'quantity-selector ';
 
 // زر -
 const minusBtn = document.createElement('button');
-minusBtn.className = 'quantity-btn btn btn-light';
+minusBtn.className = 'quantity-btn minus';
 minusBtn.textContent = '-';
 
 // مدخل الرقم
@@ -547,12 +551,12 @@ const quantityInput = document.createElement('input');
 quantityInput.type = 'number';
 quantityInput.value = 1;
 quantityInput.min = 1;
-quantityInput.className = 'quantity-input form-control text-center';
+quantityInput.className = 'quantity-input';
 quantityInput.style.width = '60px';
 
 // زر +
 const plusBtn = document.createElement('button');
-plusBtn.className = 'quantity-btn btn btn-light';
+plusBtn.className = 'quantity-btn plus';
 plusBtn.textContent = '+';
 
 quantitySelector.appendChild(minusBtn);
@@ -562,7 +566,7 @@ quantitySelector.appendChild(plusBtn);
 // زر الإضافة للسلة
 const addBtn = document.createElement('button');
 addBtn.id = 'add-to-cart-btn';
-addBtn.className = 'btn btn-danger d-flex align-items-center';
+addBtn.className = 'btn-primary';
 addBtn.innerHTML = '<i class="fas fa-cart-plus me-2"></i> Add to Cart';
 addBtn.dataset.productId = productId;
 
@@ -608,7 +612,7 @@ addBtn.addEventListener('click', function (event) {
 // تأكد من استدعاء هذه الدالة عند تحميل محتوى الصفحة
 document.addEventListener('DOMContentLoaded', initProductDetailPage);
 
-// ... بقية كود java.js (مثل دالة searchProducts والدوال المتعلقة بها) ...
+
 
 
 // تهيئة صفحة الدفع
@@ -630,7 +634,6 @@ function initCheckoutPage() {
             return;
         }
         
-        // هنا يجب إضافة كود لإرسال بيانات الطلب إلى الخادم
         alert('Order placed successfully! Thank you for your purchase.');
         cart = [];
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -665,16 +668,18 @@ document.addEventListener('DOMContentLoaded', function() { // هنا تم إضا
             window.location.href = `product-detail.html?id=${productId}`;
         });
     });
+
+
+
     
-    // إضافة أحداث النقر على المنتجات لإضافتها إلى السلة مباشرة
+    // زر بتاع السله لي في  صفحه products
     document.addEventListener('DOMContentLoaded', function() {
-        // ... (الدوال والمتغيرات الأخرى الخاصة بـ java.js مثل تعريف products و productDetails ودالة addToCart) ...
-    
+        
         // إضافة أحداث النقر على المنتجات لإضافتها إلى السلة مباشرة
         document.querySelectorAll('.product-item').forEach(item => {
             // تحقق مما إذا كان زر "Add to Cart" موجوداً بالفعل لهذا المنتج
             if (item.querySelector('.btn-add-to-cart')) {
-                //console.log('Add to cart button already exists for this item.'); // يمكن إلغاء التعليق للتصحيح
+                console.log('Add to cart button already exists for this item.');
                 return; // تخطي هذا العنصر إذا كان الزر موجوداً بالفعل
             }
     
@@ -702,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function() { // هنا تم إضا
                 console.warn('Skipping product item due to missing product ID in href:', href, item);
                 return; // تخطي هذا العنصر إذا لم يتم العثور على المعرف
             }
-    
+            
             const productName = nameElement.textContent.trim(); // استخدم trim لإزالة المسافات البيضاء
             const productPriceText = priceElement.textContent.replace(/[^\d.-]/g, ''); // إزالة كل شيء ما عدا الأرقام، النقطة، والشرطة (للسالب إذا وجد)
             const productPrice = parseFloat(productPriceText); // تحويل النص النظيف إلى رقم عشري
@@ -724,9 +729,7 @@ document.addEventListener('DOMContentLoaded', function() { // هنا تم إضا
     
             // إضافة مستمع الحدث لزر النقر
             addBtn.addEventListener('click', function(event) {
-                event.preventDefault(); // منع السلوك الافتراضي للزر إذا كان داخل فورم مثلاً (غالباً ليس هنا لكن ممارسة جيدة)
-                // عند النقر، استدعاء دالة addToCart مع البيانات المستخرجة
-                // افترض أن دالة addToCart(id, name, price, image) معرفة في مكان آخر
+                event.preventDefault();
                 addToCart(productId, productName, productPrice, productImage);
                 console.log(`Product added to cart: ID=${productId}, Name=${productName}`); // رسالة للتصحيح
                 // يمكنك إضافة رسالة تأكيد للمستخدم هنا (مثال: alert أو رسالة مؤقتة على الشاشة)
@@ -744,7 +747,7 @@ document.addEventListener('DOMContentLoaded', function() { // هنا تم إضا
 
 
 
-//________________________البحث عن المنتاجات________________________________
+//______________________  Category and Search البحث عن منتجات ________________________
 document.addEventListener('DOMContentLoaded', function() {
     // تحديث عداد السلة
     updateCartCount();
