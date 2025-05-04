@@ -12,8 +12,6 @@
          <nav>
             <ul>
                 <li><a href="Detail.html">Details</a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
                 <li><a href="login.html">Log In</a></li>
                 <li><a href="signup.html" class="active">Sign Up</a></li>
             </ul>
@@ -24,26 +22,29 @@
         <h2>Create Your Account</h2>
         <form id="signup-form" action="#" method="post"> <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" required  placeholder="Name">
                 <span class="error-message" id="username-error"></span>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required  placeholder="Email">
                  <span class="error-message" id="email-error"></span>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" required  placeholder="Password">
                  <span class="error-message" id="password-error"></span>
             </div>
             <div class="form-group">
                 <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
+                <input type="password" id="confirm-password" name="confirm-password" required  placeholder="Confirm">
                 <span class="error-message" id="confirm-password-error"></span>
             </div>
             <button type="submit">Sign Up</button>
+            
         </form>
+    
+
         <p>Already have an account? <a href="login.html">Log In</a></p>
     </main>
 
