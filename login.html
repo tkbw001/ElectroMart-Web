@@ -12,8 +12,6 @@
          <nav>
             <ul>
                 <li><a href="Detail.html">Details</a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
                 <li><a href="login.html" class="active">Log In</a></li>
                 <li><a href="signup.html">Sign Up</a></li>
             </ul>
@@ -23,16 +21,27 @@
     <main>
         <h2>Log In to Your Account</h2>
         <form id="login-form" action="#" method="post"> <div class="form-group">
-                <label for="login-email">Email or Username:</label>
-                <input type="text" id="login-email" name="login-email" required>
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" name="login-username" required placeholder="Name">
+            <span class="error-message" id="login-username-error"></span>
+            
+            <div class="form-group">
+                <label for="login-email">Email:</label>
+                <input type="text" id="login-email" name="login-email" required placeholder="Email">
                  <span class="error-message" id="login-email-error"></span>
             </div>
              <div class="form-group">
                 <label for="login-password">Password:</label>
-                <input type="password" id="login-password" name="login-password" required>
+                <input type="password" id="login-password" name="login-password" required placeholder="Password">
                 <span class="error-message" id="login-password-error"></span>
             </div>
+
+            
             <button type="submit">Log In</button>
+
+
+
+
         </form>
         <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
     </main>
@@ -41,5 +50,5 @@
         <p>&copy; 2025 ElectroMart. All rights reserved.</p>
     </footer>
 
-     <script src="js/script.js"></script> </body>
+     <script src="java.js"></script> </body>
 </html>
